@@ -1,15 +1,17 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: artwork_shares
 #
 #  id         :bigint           not null, primary key
-#  username   :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  artwork_id :integer          not null
+#  viewer_id  :integer          not null
 #
 # Indexes
 #
-#  index_users_on_username  (username)
+#  index_artwork_shares_on_artwork_id                (artwork_id)
+#  index_artwork_shares_on_viewer_id_and_artwork_id  (viewer_id,artwork_id) UNIQUE
 #
 
 # This model initially had no columns defined. If you add columns to the

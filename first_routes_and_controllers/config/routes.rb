@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   patch 'users/:id', to: 'users#update'#, as: 'user'
   put 'users/:id', to: 'users#update'#, as: 'user'
   delete 'users/:id', to: 'users#destroy'#, as: 'user'
+
+  resources :artwork_shares
 end
