@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
     def index
-        render json: User.all
+
+        if params[:username]
+            @user = User.where("username LIKE '%#{params[:username].to_s}%' ")
+            #debugger
+            redirect_to user_url(@user[0])
+            #render json: User.where("username LIKE '%#{params[:username].to_s}%' ")
+        else
+            render json: User.all
+        end
     end
 
     def create
@@ -15,6 +23,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        #debugger
         @user = User.find(params[:id])
         render json: @user
     end
@@ -41,7 +50,7 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:name,:email)
+        params.require(:user).permit(:username)
     end
 
 end

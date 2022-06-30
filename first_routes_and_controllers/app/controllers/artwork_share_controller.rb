@@ -1,4 +1,4 @@
-class ArtworkShareController < ApplicationController
+    class ArtworkSharesController < ApplicationController
 
     def create
         @share = ArtworkShare.new(artwork_share_params)
@@ -13,7 +13,7 @@ class ArtworkShareController < ApplicationController
         @share = ArtworkShare.find(params[:id])
             if @share.destroy
                 render json: @share
-                redirect_to user_url(@share)
+                #redirect_to user_url(@share)
             else
                 render json: @share.error.full_messages, status: :unprocessable_entity
             end
